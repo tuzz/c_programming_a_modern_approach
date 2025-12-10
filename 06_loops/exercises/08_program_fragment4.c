@@ -7,6 +7,7 @@ int main(void) {
   for (i = 10; i >= 1; i /= 2) {
     printf("%d ", i++);
 
+    // Terminate after 10 iterations.
     count += 1;
     if (count >= 10) {
       break;
