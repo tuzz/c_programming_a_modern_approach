@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main(void) {
-  int n = 5;
+  int n = 0;
 
   // The following statement is legal but my compiler warns about it:
   // > comparisons like 'X<=Y<=Z' don't have their mathematical meaning
