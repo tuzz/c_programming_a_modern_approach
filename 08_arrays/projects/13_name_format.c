@@ -4,6 +4,8 @@
 
 int main(void) {
   char c, first_letter;
+  char last_name[20];
+  int i = 0;
   printf("Enter a first and last name: ");
 
   // Read optional whitespace.
@@ -18,14 +20,19 @@ int main(void) {
   // Read optional whitespace.
   while ((c = (char)getchar()) == ' ' || c == '\t' || c == '\n') {}
 
-  // Print the first letter of the last name.
-  putchar(toupper(c));
+  // Store the first letter of the last name.
+  last_name[i++] = (char)toupper(c);
 
-  // Read and print the rest of the letters of the last name.
-  while ((c = (char)getchar()) != ' ' && c != '\t' && c != '\n') { putchar(c); }
+  // Read the rest of the letters of the last name.
+  while ((c = (char)getchar()) != ' ' && c != '\t' && c != '\n') { last_name[i++] = c; }
 
   // Read whitespace (or anything else) until a newline.
   while (c != '\n') { c = (char)getchar(); }
+
+  printf("You entered the name: ");
+  for (int j = 0; j < i; j++) {
+    putchar(last_name[j]);
+  }
 
   printf(", %c.\n", first_letter);
   return 0;
