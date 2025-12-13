@@ -1,16 +1,16 @@
 #include <stdio.h>
 
-#define N 10
+#define ARRAY_COUNT(array) ((int)(sizeof(array) / sizeof(array[0])))
 
 int main(void) {
-  int a[N], i;
+  int a[10], i;
 
-  printf("Enter %d numbers: ", N);
-  for (i = 0; i < N; i++)
+  printf("Enter %d numbers: ", ARRAY_COUNT(a));
+  for (i = 0; i < ARRAY_COUNT(a); i++)
     scanf("%d", &a[i]);
 
   printf("In reverse order:");
-  for (i = N - 1; i >= 0; i--)
+  for (i = ARRAY_COUNT(a) - 1; i >= 0; i--)
     printf(" %d", a[i]);
   printf("\n");
 
