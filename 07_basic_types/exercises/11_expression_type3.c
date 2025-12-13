@@ -6,8 +6,8 @@ int main(void) {
   double d = 1.0;
 
   // The type of the expression is double. First i * f will be evaluated which
-  // implicitly casts i to a float. Then result / d will be evaluated which
-  // implicitly casts result to a double and the result is double.
+  // implicitly converts i to a float. Then result / d will be evaluated which
+  // implicitly converts result to a double and the result is double.
   printf("%f\n", i * f / d);
 
   return 0;
