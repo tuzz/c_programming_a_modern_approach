@@ -15,7 +15,7 @@ int main(void) {
   };
 
   for (size_t row = 0; row < ARRAY_COUNT(chess_board); row++) {
-    for (size_t column = 0; column < ARRAY_COUNT(chess_board); column++) {
+    for (size_t column = 0; column < ARRAY_COUNT(chess_board[0]); column++) {
       printf("%c ", chess_board[row][column]);
     }
     putchar('\n');
