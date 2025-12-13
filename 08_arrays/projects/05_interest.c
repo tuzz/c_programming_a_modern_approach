@@ -4,7 +4,7 @@
 #define INITIAL_BALANCE 100.00
 
 int main(void) {
-  int i, low_rate, num_years, year;
+  int i, low_rate, num_years, year, month;
   double value[5];
 
   printf("Enter interest rate: ");
@@ -22,7 +22,9 @@ int main(void) {
   for (year = 1; year <= num_years; year++) {
     printf("%3d    ", year);
     for (i = 0; i < NUM_RATES; i++) {
-      value[i] += (low_rate + i) / 100.0 * value[i];
+      for (month = 0; month < 12; month++) {
+        value[i] += (low_rate + i) / 100.0 / 12.0 * value[i];
+      }
       printf("%7.2f", value[i]);
     }
     printf("\n");
