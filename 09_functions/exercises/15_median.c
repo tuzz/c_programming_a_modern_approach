@@ -1,15 +1,23 @@
 #include <stdio.h>
 
 static double median(double x, double y, double z) {
-  if (x <= y) {
-    if (y <= z) { return y; }
-    else if (x <= z) { return z; }
-    else { return x; }
+  double tmp;
+
+  // Sort x and y.
+  if (y < x) {
+    tmp = x;
+    x = y;
+    y = tmp;
   }
 
-  if (z <= y) { return y; }
-  if (x <= z) { return x; }
-  return z;
+  // Sort y and z.
+  if (z < y) {
+    tmp = y;
+    y = z;
+    z = tmp;
+  }
+
+  return y;
 }
 
 int main(void) {
