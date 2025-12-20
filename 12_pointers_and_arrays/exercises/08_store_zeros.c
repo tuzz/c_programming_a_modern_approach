@@ -3,10 +3,9 @@
 #define ARRAY_COUNT(array) (sizeof(array) / sizeof(array[0]))
 
 static void store_zeros(int a[], int n) {
-  int i;
-
-  for (i = 0; i < n; i++)
-    a[i] = 0;
+  for (int *p = a; p < &a[n]; p++) {
+    *p = 0;
+  }
 }
 
 int main(void) {
