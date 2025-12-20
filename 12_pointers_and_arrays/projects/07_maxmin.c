@@ -1,14 +1,13 @@
 #include <stdio.h>
 
 static void max_min(int a[], int n, int *max, int *min) {
-  int i;
-
   *max = *min = a[0];
-  for (i = 1; i < n; i++) {
-    if (a[i] > *max)
-      *max = a[i];
-    else if (a[i] < *min)
-      *min = a[i];
+
+  for (int *p = a; p < &a[n]; p++) {
+    if (*p > *max)
+      *max = *p;
+    else if (*p < *min)
+      *min = *p;
   }
 }
 
