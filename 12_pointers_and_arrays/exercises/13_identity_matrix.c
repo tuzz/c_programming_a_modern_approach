@@ -4,19 +4,21 @@
 
 int main(void) {
   double ident[N][N];
-  int row, col;
+  int count = N;
 
-  for (row = 0; row < N; row++)
-    for (col = 0; col < N; col++)
-      if (row == col)
-        ident[row][col] = 1.0;
-      else
-        ident[row][col] = 0.0;
+  for (double *p = ident[0]; p < &ident[N][0]; p++) {
+    if (count == N) {
+      *p = 1.0;
+      count = 0;
+    } else {
+      *p = 0.0;
+      count++;
+    }
+  }
 
-
-  for (row = 0; row < N; row++) {
-    for (col = 0; col < N; col++) {
-      printf("%f ", ident[row][col]);
+  for (int i = 0; i < N; i++) {
+    for (int j = 0; j < N; j++) {
+      printf("%f ", ident[i][j]);
     }
     printf("\n");
   }
