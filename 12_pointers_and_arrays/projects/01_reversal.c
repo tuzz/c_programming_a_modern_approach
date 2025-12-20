@@ -5,8 +5,7 @@ int main(void) {
   char message[50], c, *p = message;
 
   while ((c = (char)getchar()) != '\n' && p < &message[50]) {
-    *p = c;
-    p++;
+    *p++ = c;
   }
 
   printf("Reversal is: ");
