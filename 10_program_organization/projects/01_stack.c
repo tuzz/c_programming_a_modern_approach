@@ -14,7 +14,7 @@ static void stack_underflow(void) {}
 static char contents[STACK_SIZE];
 static int top = 0;
 
-static void make_entry(void) {
+static void make_empty(void) {
   top = 0;
 }
 
