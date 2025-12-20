@@ -3,7 +3,7 @@
 #define ARRAY_COUNT(array) (sizeof(array) / sizeof(array[0]))
 
 static int *find_middle(int a[], int n) {
-  return &a[n / 2];
+  return a + n / 2;
 }
 
 int main(void) {
