@@ -28,7 +28,7 @@ int main(void) {
   // c) In general, f finds the first character that appears in s but not in t.
   //
   // It goes through each character of s and checks if it appears anywhere in t.
-  // If it does then we break the inner loop and check the next character.
+  // If it does then we break the inner loop and check the next character in s.
   // If it doesn't then we reach the end of string t and break the outer loop.
   //
   // We then return the difference between p1 and s which is the index position
