@@ -3,13 +3,14 @@
 
 #define MAX_REMIND 50
 #define MSG_LEN 60
+#define DATE_LEN 11
 
 int read_line(char str[], int n);
 
 int main(void) {
   char reminders[MAX_REMIND][MSG_LEN + 3];
-  char day_str[3], msg_str[MSG_LEN + 1];
-  int day, i, j, num_remind = 0;
+  char date_str[DATE_LEN + 1], msg_str[MSG_LEN + 1];
+  int month, day, hours, minutes, i, j, num_remind = 0;
 
   for (;;) {
     if (num_remind == MAX_REMIND) {
@@ -17,26 +18,31 @@ int main(void) {
       break;
     }
 
-    printf("Enter day and reminder: ");
-    scanf("%2d", &day);
-    if (day == 0)
+    printf("Enter month, day, 24-hour time and reminder: ");
+    scanf("%2d/%2d", &month, &day);
+    if (month == 0 || day == 0) {
       break;
-    sprintf(day_str, "%2d", day);
+    } else if (month < 0 || month > 12 || day < 0 || day > 31) {
+      printf("Error: date is invalid, skipping\n");
+      continue;
+    }
+    scanf("%2d:%2d", &hours, &minutes);
+    sprintf(date_str, "%d/%d %.2d:%.2d", month, day, hours, minutes);
     read_line(msg_str, MSG_LEN);
 
     for (i = 0; i < num_remind; i++)
-      if (strcmp(day_str, reminders[i]) < 0)
+      if (strcmp(date_str, reminders[i]) < 0) // Will secondary sort by 24-hour time.
         break;
     for(j = num_remind; j > i; j--)
       strcpy(reminders[j], reminders[j-1]);
 
-    strcpy(reminders[i], day_str);
+    strcpy(reminders[i], date_str);
     strcat(reminders[i], msg_str);
 
     num_remind++;
   }
 
-  printf("\nDay reminder\n");
+  printf("\nDate Time  Reminder\n");
   for (i = 0; i < num_remind; i++)
     printf(" %s\n", reminders[i]);
 
