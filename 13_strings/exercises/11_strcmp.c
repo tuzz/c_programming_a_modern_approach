@@ -1,14 +1,15 @@
 #include <stdio.h>
 
 static int strcmp(char *s, char *t) {
-  int i;
-
-  for (i = 0; s[i] == t[i]; i++) {
-    if (s[i] == '\0') {
+  while (*s == *t) {
+    if (*s == '\0') {
       return 0;
     }
+    s++;
+    t++;
   }
-  return s[i] - t[i];
+
+  return *s - *t;
 }
 
 int main(void) {
