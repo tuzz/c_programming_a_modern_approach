@@ -1,0 +1,19 @@
+# Run from root directory with this command:
+# make -C 15_writing_large_programs/exercises -f 05_Makefile
+
+.PHONY: clean
+
+demo: 05_main.o 05_f1.o 05_f2.o
+	gcc -o demo 05_main.o 05_f1.o 05_f2.o
+
+05_main.o: 05_main.c 05_f1.h
+	gcc -c 05_main.c
+
+05_f1.o: 05_f1.c 05_f1.h 05_f2.h
+	gcc -c 05_f1.c
+
+05_f2.o: 05_f2.c 05_f2.h 05_f1.h
+	gcc -c 05_f2.c
+
+clean:
+	rm -f demo 05_main.o 05_f1.o 05_f2.o
