@@ -1,0 +1,16 @@
+# Run from root directory with this command:
+# make -C 15_writing_large_programs/projects -f 04_Makefile
+
+.PHONY: clean
+
+remind: 04_remind.o 04_readline.o
+	gcc -o remind 04_remind.o 04_readline.o
+
+04_remind.o: 04_remind.c 04_readline.h
+	gcc -c 04_remind.c
+
+04_readline.o: 04_readline.c 04_readline.h
+	gcc -c 04_readline.c
+
+clean:
+	rm -f remind 04_remind.o 04_readline.o
