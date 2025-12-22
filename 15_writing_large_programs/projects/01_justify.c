@@ -74,9 +74,12 @@ static int read_word(char *word, int len) {
   while ((ch = read_char()) == ' ')
     ;
   while (ch != ' ' && ch != EOF) {
-    if (pos < len)
+    if (pos <= len)
       word[pos++] = (char)ch;
     ch = read_char();
+  }
+  if (pos == len + 1) {
+    word[len] = '*';
   }
   word[pos] = '\0';
   return pos;
@@ -89,13 +92,11 @@ int main(void) {
 
   clear_line();
   for (;;) {
-    word_len = read_word(word, MAX_WORD_LEN+1);
+    word_len = read_word(word, MAX_WORD_LEN);
     if (word_len == 0) {
       flush_line();
       return 0;
     }
-    if (word_len > MAX_WORD_LEN)
-      word[MAX_WORD_LEN] = '*';
     if (word_len + 1 > space_remaining()) {
       write_line(line_number++);
       clear_line();
