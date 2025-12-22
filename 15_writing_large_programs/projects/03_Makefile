@@ -1,0 +1,16 @@
+# Run from root directory with this command:
+# make -C 15_writing_large_programs/projects -f 03_Makefile
+
+.PHONY: clean
+
+qsort: 03_qsort.o 03_quicksort.o
+	gcc -o qsort 03_qsort.o 03_quicksort.o
+
+03_qsort.o: 03_qsort.c 03_quicksort.h
+	gcc -c 03_qsort.c
+
+03_quicksort.o: 03_quicksort.c 03_quicksort.h
+	gcc -c 03_quicksort.c
+
+clean:
+	rm -f qsort 03_qsort.o 03_quicksort.o
