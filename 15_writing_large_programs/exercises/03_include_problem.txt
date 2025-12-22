@@ -1,0 +1,5 @@
+Yes, there could be a problem when writing #include "file" instead of  <file>.
+Although the compiler will first search the local directory and then check the
+system headers to find the file, if (for some strange reason) there is a local
+file that matches the name of a system header, it would be included instead of
+the system header, which might not be what the user was expecting.
