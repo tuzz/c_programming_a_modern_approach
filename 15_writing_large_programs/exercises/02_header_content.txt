@@ -1,0 +1,11 @@
+a) Function prototypes should be included in header files provided they are for
+functions that are intended to be called by other parts of the program.
+
+b) Function definitions should NOT be included in header files since that would
+cause the program to recompile the definitions each time they are included into
+a source file. Furthermore, the function definitions might not be available.
+
+c) Macro definitions should be included in header files so they can be reused.
+
+d) Type definitions should NOT be included in header files because storage will
+be reserved at file scope. Instead, type _declarations_ should be included.
