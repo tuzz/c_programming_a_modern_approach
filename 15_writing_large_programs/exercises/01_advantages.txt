@@ -1,0 +1,25 @@
+a) Other advantages of dividing a large program into multiple source files
+
+- The program can be maintained more easily by different people. For example, if
+separate people first agree on a shared interface, they can work on their
+domains independently without worrying about file conflicts.
+
+- It's easier to understand the scope of changes in a revision control system
+purely based on inspecting which files were changed in a commit.
+
+- It's easier to analyse dependencies between parts of the code, e.g. to
+understand which groups of functions are most heavily depended on. This might
+inform decisions about where to spend time refactoring or adding features.
+
+b) Some disadvantages of dividing a large program into multiple source files
+
+- "Dependency hell" which is when the dependency tree becomes very complex and
+it's hard to understand which files need to be compiled and linked in order to
+build a target program.
+
+- If a file was split into two but it actually shares a lot of functionality, it
+can add extra maintenance overhead. Perhaps it would make sense to keep all the
+code in one place rather than artificially splitting it across files.
+
+- It adds additional design overhead of deciding what should go in the header
+files and can add unnecessary indirection between code units.
