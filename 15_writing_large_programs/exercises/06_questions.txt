@@ -1,0 +1,7 @@
+a) When the program is built for the first time, then f1.c, f2.c, main.c need to be built.
+
+b) If f1.c is changed then f1.c needs to be recompiled.
+
+c) If f1.h is changed then f1.c, f2.c and main.c need to be recompiled.
+
+d) If f2.h is changed then f1.c and f2.c need to be recompiled.
