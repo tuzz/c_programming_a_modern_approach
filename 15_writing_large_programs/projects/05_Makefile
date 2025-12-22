@@ -1,0 +1,19 @@
+# Run from root directory with this command:
+# make -C 15_writing_large_programs/projects -f 05_Makefile
+
+.PHONY: clean
+
+remind: 05_calc.o 05_token.o 05_stack.o
+	gcc -o calc 05_calc.o 05_token.o 05_stack.o
+
+05_calc.o: 05_calc.c 05_token.h
+	gcc -c 05_calc.c
+
+05_token.o: 05_token.c 05_token.h 05_stack.h
+	gcc -c 05_token.c
+
+05_stack.o: 05_stack.c 05_stack.h
+	gcc -c 05_stack.c
+
+clean:
+	rm -f calc 05_calc.o 05_token.o 05_stack.o
