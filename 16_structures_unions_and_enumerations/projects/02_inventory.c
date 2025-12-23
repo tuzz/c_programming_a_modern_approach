@@ -5,23 +5,23 @@
 #define NAME_LEN 25
 #define MAX_PARTS 100
 
-static struct part {
+struct part {
   int number;
   int on_hand;
   char name[NAME_LEN + 1];
   char _padding[2];
-} inventory[MAX_PARTS];
+};
 
-static int num_parts = 0;
-
-int find_part(int number);
-void insert(void);
-void search(void);
-void update(void);
-void print(void);
+int find_part(int number, const struct part *inventory, int num_parts);
+int insert(struct part *inventory, int num_parts);
+void search(const struct part *inventory, int num_parts);
+void update(struct part *inventory, int num_parts);
+void print(struct part *inventory, int num_parts);
 int read_line(char str[], int n);
 
 int main(void) {
+  struct part inventory[MAX_PARTS];
+  int num_parts = 0;
   char code;
 
   for (;;) {
@@ -30,13 +30,13 @@ int main(void) {
     while (getchar() != '\n')
       ;
     switch (code) {
-      case 'i': insert();
+      case 'i': num_parts = insert(inventory, num_parts);
                 break;
-      case 's': search();
+      case 's': search(inventory, num_parts);
                 break;
-      case 'u': update();
+      case 'u': update(inventory, num_parts);
                 break;
-      case 'p': print();
+      case 'p': print(inventory, num_parts);
                 break;
       case 'q': return 0;
       default: printf("Illegal code\n");
@@ -45,7 +45,7 @@ int main(void) {
   }
 }
 
-int find_part(int number) {
+int find_part(int number, const struct part *inventory, int num_parts) {
   int i;
 
   for (i = 0; i < num_parts; i++)
@@ -54,20 +54,20 @@ int find_part(int number) {
   return -1;
 }
 
-void insert(void) {
+int insert(struct part *inventory, int num_parts) {
   int part_number;
 
   if (num_parts == MAX_PARTS) {
     printf("Database is full; can't add more parts.\n");
-    return;
+    return num_parts;
   }
 
   printf("Enter part number: ");
   scanf("%d", &part_number);
 
-  if (find_part(part_number) >= 0) {
+  if (find_part(part_number, inventory, num_parts) >= 0) {
     printf("Part already exists.\n");
-    return;
+    return num_parts;
   }
 
   inventory[num_parts].number = part_number;
@@ -76,14 +76,15 @@ void insert(void) {
   printf("Enter quantity on hand: ");
   scanf("%d", &inventory[num_parts].on_hand);
   num_parts++;
+  return num_parts;
 }
 
-void search(void) {
+void search(const struct part *inventory, int num_parts) {
   int i, number;
 
   printf("Enter part number: ");
   scanf("%d", &number);
-  i = find_part(number);
+  i = find_part(number, inventory, num_parts);
   if (i >= 0) {
     printf("Part name: %s\n", inventory[i].name);
     printf("Quantity on hand: %d\n", inventory[i].on_hand);
@@ -92,12 +93,12 @@ void search(void) {
   }
 }
 
-void update(void) {
+void update(struct part *inventory, int num_parts) {
   int i, number, change;
 
   printf("Enter part number: ");
   scanf("%d", &number);
-  i = find_part(number);
+  i = find_part(number, inventory, num_parts);
   if (i >= 0) {
     printf("Enter change in quantity on hand: ");
     scanf("%d", &change);
@@ -113,7 +114,7 @@ static int order_by_part_number(const void *a, const void *b) {
   return (*part1).number - (*part2).number;
 }
 
-void print(void) {
+void print(struct part *inventory, int num_parts) {
   int i;
 
   qsort(inventory, (size_t)num_parts, sizeof(struct part), order_by_part_number);
