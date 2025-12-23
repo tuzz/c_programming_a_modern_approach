@@ -8,6 +8,7 @@
 struct part {
   int number;
   int on_hand;
+  float price;
   char name[NAME_LEN + 1];
   char _padding[2];
 };
@@ -75,6 +76,8 @@ int insert(struct part *inventory, int num_parts) {
   read_line(inventory[num_parts].name, NAME_LEN);
   printf("Enter quantity on hand: ");
   scanf("%d", &inventory[num_parts].on_hand);
+  printf("Enter price in dollars: ");
+  scanf("%f", &inventory[num_parts].price);
   num_parts++;
   return num_parts;
 }
@@ -88,6 +91,7 @@ void search(const struct part *inventory, int num_parts) {
   if (i >= 0) {
     printf("Part name: %s\n", inventory[i].name);
     printf("Quantity on hand: %d\n", inventory[i].on_hand);
+    printf("Price: $%.2f\n", (double)inventory[i].price);
   } else {
     printf("Part not found.\n");
   }
@@ -119,9 +123,14 @@ void print(struct part *inventory, int num_parts) {
 
   qsort(inventory, (size_t)num_parts, sizeof(struct part), order_by_part_number);
 
-  printf("Part Number     Part Name                  Quantity on Hand\n");
+  printf("Part Number     Part Name                  Quantity on Hand    Price\n");
   for (i = 0; i < num_parts; i++)
-    printf("%7d         %-25s%11d\n", inventory[i].number, inventory[i].name, inventory[i].on_hand);
+    printf("%7d         %-25s%11d           $%.2f\n",
+      inventory[i].number,
+      inventory[i].name,
+      inventory[i].on_hand,
+      (double)inventory[i].price
+    );
 }
 
 
