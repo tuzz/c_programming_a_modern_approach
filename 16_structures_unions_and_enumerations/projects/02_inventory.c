@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <ctype.h>
+#include <stdlib.h>
 
 #define NAME_LEN 25
 #define MAX_PARTS 100
@@ -105,8 +106,17 @@ void update(void) {
     printf("Part not found.\n");
 }
 
+static int order_by_part_number(const void *a, const void *b) {
+  const struct part *part1 = (const struct part *)a;
+  const struct part *part2 = (const struct part *)b;
+
+  return (*part1).number - (*part2).number;
+}
+
 void print(void) {
   int i;
+
+  qsort(inventory, (size_t)num_parts, sizeof(struct part), order_by_part_number);
 
   printf("Part Number     Part Name                  Quantity on Hand\n");
   for (i = 0; i < num_parts; i++)
