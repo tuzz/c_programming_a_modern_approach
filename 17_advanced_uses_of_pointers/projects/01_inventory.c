@@ -1,17 +1,20 @@
 #include <stdio.h>
 #include <ctype.h>
+#include <stdlib.h>
 
 #define NAME_LEN 25
-#define MAX_PARTS 100
+#define INITIAL_PARTS 10
 
-static struct part {
+struct part {
   int number;
   int on_hand;
   char name[NAME_LEN + 1];
   char _padding[2];
-} inventory[MAX_PARTS];
+};
 
+static struct part *inventory;
 static int num_parts = 0;
+static int max_parts = INITIAL_PARTS;
 
 int find_part(int number);
 void insert(void);
@@ -21,6 +24,7 @@ void print(void);
 int read_line(char str[], int n);
 
 int main(void) {
+  inventory = calloc(10, sizeof(*inventory));
   char code;
 
   for (;;) {
@@ -56,9 +60,17 @@ int find_part(int number) {
 void insert(void) {
   int part_number;
 
-  if (num_parts == MAX_PARTS) {
-    printf("Database is full; can't add more parts.\n");
-    return;
+  if (num_parts == max_parts) {
+    max_parts *= 2;
+    struct part *reallocated = realloc(inventory, (unsigned long)max_parts * sizeof(*inventory));
+
+    if (reallocated) {
+      printf("Inventory size increased to %d.\n", max_parts);
+      inventory = reallocated;
+    } else {
+      printf("Failed to increase size of inventory.\n");
+      return;
+    }
   }
 
   printf("Enter part number: ");
