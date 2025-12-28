@@ -5,7 +5,7 @@ struct part {
 };
 
 static int compare_parts(const void *p, const void *q) {
-  return ((const struct part *) p)->number - ((const struct part *) q)->number;
+  return ((const struct part *) q)->number - ((const struct part *) p)->number;
 }
 
 int main(void) {
