@@ -19,6 +19,7 @@ struct part *find_part(int number);
 void insert(void);
 void search(void);
 void update(void);
+void erase(void);
 void print(void);
 int read_line(char str[], int n);
 
@@ -36,6 +37,8 @@ int main(void) {
       case 's': search();
                 break;
       case 'u': update();
+                break;
+      case 'e': erase();
                 break;
       case 'p': print();
                 break;
@@ -119,6 +122,31 @@ void update(void) {
     p->on_hand += change;
   } else
     printf("Part not found.\n");
+}
+
+void erase(void) {
+  int number;
+  printf("Enter part number: ");
+  scanf("%d", &number);
+
+  struct part *cur, *prev;
+
+  for (cur = inventory, prev = NULL;
+      cur != NULL && cur->number != number;
+      prev = cur, cur = cur->next)
+    ;
+
+  if (cur == NULL) {
+    printf("Part not found.\n");
+    return;
+  }
+
+  if (prev == NULL) {
+    inventory = inventory->next;
+  } else {
+    prev->next = cur->next;
+  }
+  free(cur);
 }
 
 void print(void) {
