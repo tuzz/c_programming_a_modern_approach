@@ -1,0 +1,16 @@
+a) false, the type qualifier "const" makes the variable read-only (immutable)
+but its value may not be determined until runtime. The variable isn't constant
+in the sense that the compiler knows its value at compile time and this is a
+requirement in order to generated the assembly for switch statements, e.g.
+
+void foo(int x, int y) {
+  const int z = y / 2;
+
+  switch (x) {
+    case z: ... // illegal because z is computed at runtime
+  }
+}
+
+b) true
+c) true
+d) true
