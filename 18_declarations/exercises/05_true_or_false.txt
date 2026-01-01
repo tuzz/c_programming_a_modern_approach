@@ -1,0 +1,18 @@
+a) false, variables can be declared inside functions with the "static" or
+"extern" storage class which have static storage duration
+
+b) false, variables can be declared inside functions with the "extern" storage
+class which has external linkage
+
+c) true, linkage is determined by the storage class and there are four options:
+- auto: no linkage
+- static: internal linkage at file scope, no linkage at block scope
+- extern: external linkage
+- register: no linkage
+
+Therefore, if a variable has internal linkage then it must be a static variable
+at file scope so the statement is correct.
+
+d) true, by default function parameters use the "auto" storage class and can
+optionally be declared with the "register" storage class. In either case, the
+parameter has block scope.

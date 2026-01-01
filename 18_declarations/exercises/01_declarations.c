@@ -1,5 +1,5 @@
 // Storage classes: auto, static, extern, register
-// Type qualifiers: const, volatile
+// Type qualifiers: const, volatile, restrict
 // Type specifiers: type, e.g. unsigned long int
 // Declarators: names, preceded by *, followed by [] or ()
 // Initializers: expressions, must be constant for static storage
