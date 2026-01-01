@@ -1,0 +1,20 @@
+a) extern
+b) static
+c) extern, static
+
+For c), consider each storage class:
+
+- auto: this cannot affect the storage duration of a variable because it is
+  illegal at file scope and it is the default for variables in functions.
+
+- extern: this affects the storage duration of variables declared in functions
+  which are auto by default. The storage duration becomes static with external
+  linkage. At file scope, variables default to static storage duration, anyway.
+
+- static: this affects the storage duration of variables declared in functions
+  which are auto by default. The storage duration becomes static with internal
+  linkage. At file scope, variables default to static storage duration, anyway.
+
+- register: this cannot affect the storage duration of a variable because it is
+  illegal at file scope and the storage duration of register is the same as
+  the default storage duration (auto) which is automatic.
