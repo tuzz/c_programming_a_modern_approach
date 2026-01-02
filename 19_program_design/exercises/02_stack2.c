@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "02_stack2.h"
 
+#define PUBLIC
+#define PRIVATE static
 
 struct node {
   struct node *next;
@@ -9,27 +11,27 @@ struct node {
   char _padding[4];
 };
 
-static struct node *top = NULL;
+PRIVATE struct node *top = NULL;
 
-static void terminate(const char *message) {
+PRIVATE void terminate(const char *message) {
   printf("%s\n", message);
   exit(EXIT_FAILURE);
 }
 
-void make_empty(void) {
+PUBLIC void make_empty(void) {
   while (!is_empty())
     pop();
 }
 
-bool is_empty(void) {
+PUBLIC bool is_empty(void) {
   return top == NULL;
 }
 
-bool is_full(void) {
+PUBLIC bool is_full(void) {
   return false;
 }
 
-void push(int i) {
+PUBLIC void push(int i) {
   struct node *new_node = malloc(sizeof(struct node));
   if (new_node == NULL)
     terminate("Error in push: stack is full.");
@@ -39,7 +41,7 @@ void push(int i) {
   top = new_node;
 }
 
-int pop(void) {
+PUBLIC int pop(void) {
   struct node *old_top;
   int i;
 
@@ -51,4 +53,8 @@ int pop(void) {
   top = top->next;
   free(old_top);
   return i;
+}
+
+int main(void) {
+  return 0;
 }
