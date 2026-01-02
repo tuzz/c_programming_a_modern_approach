@@ -1,3 +1,6 @@
+#include <stdbool.h>
+#include <stdio.h>
+
 // Inserts an item at the end of the queue. Returns false if the queue is full.
 bool queue_push_back(Item *item);
 
