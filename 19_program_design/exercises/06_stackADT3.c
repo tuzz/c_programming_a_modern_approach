@@ -67,10 +67,18 @@ Item pop(Stack s) {
   return i;
 }
 
+Item peek(Stack s) {
+  if (is_empty(s))
+    terminate("Error in peek: stack is empty.");
+  return s->top->data;
+}
+
 int main(void) {
   Stack stack = create();
 
   push(stack, 123);
+  printf("peeked: %d\n", peek(stack));
+  printf("peeked: %d\n", peek(stack));
   printf("%d\n", pop(stack));
   printf("%d\n", pop(stack));
 
