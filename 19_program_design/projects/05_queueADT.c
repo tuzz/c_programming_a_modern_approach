@@ -18,7 +18,7 @@ PRIVATE void terminate(const char *message) {
 }
 
 PUBLIC Queue queue_create(void) {
-  Queue queue = calloc(1, sizeof(Queue));
+  Queue queue = calloc(1, sizeof(struct queue_type));
   if (!queue) { terminate("Failed to create queue."); }
   return queue;
 }
