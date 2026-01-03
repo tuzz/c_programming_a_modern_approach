@@ -50,10 +50,18 @@ int pop(Stack s) {
   return s->contents[--s->top];
 }
 
+int peek(Stack s) {
+  if (is_empty(s))
+    terminate("Error in peek: stack is empty.");
+  return s->contents[s->top - 1];
+}
+
 int main(void) {
   Stack stack = create();
 
   push(stack, 123);
+  printf("peeked: %d\n", peek(stack));
+  printf("peeked: %d\n", peek(stack));
   printf("%d\n", pop(stack));
   printf("%d\n", pop(stack));
 
