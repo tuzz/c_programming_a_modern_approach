@@ -1,0 +1,211 @@
+On my machine (macOS Sequoia), the header files are located in:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include
+
+For example:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h
+
+Here are all the C89 standard headers in that directory.
+
+- assert.h
+- ctype.h
+- errno.h
+- float.h
+- limits.h
+- locale.h
+- math.h
+- setjmp.h
+- signal.h
+- stddef.h
+- stdio.h
+- stdlib.h
+- string.h
+- time.h
+
+The stdarg.h header is missing. Maybe it's built into the compiler.
+
+Here are all the C99 standard headers in that directory.
+
+- complex.h
+- fenv.h
+- inttypes.h
+- iso646.h
+- stdint.h
+- tgmath.h
+- wchar.h
+- wctype.h
+
+The stdbool.h header is missing. Maybe it's built into the compiler.
+
+There are some non-standard headers that seem to for macOS / compiler internals:
+
+- aliasdb.h
+- AppleEXR.h
+- AppleTextureEncoder.h
+- asl.h
+- AssertMacros.h
+- Availability.h
+- AvailabilityInternal.h
+- AvailabilityInternalLegacy.h
+- AvailabilityMacros.h
+- AvailabilityVersions.h
+- bitstring.h
+- Block.h
+- bootparams.h
+- bootstrap.h
+- cache_callbacks.h
+- cache.h
+- checkint.h
+- compression.h
+- ConditionalMacros.h
+- copyfile.h
+- crt_externs.h
+- disktab.h
+- dns_sd.h
+- dns_util.h
+- dns.h
+- dtrace.h
+- eti.h
+- execinfo.h
+- fsproperties.h
+- get_compat.h
+- gethostuuid.h
+- launch.h
+- libc.h
+- libmanagedconfigurationfiles.h
+- libproc.h
+- libunwind.h
+- MacTypes.h
+- membership.h
+- monitor.h
+- nameser.h
+- notify_keys.h
+- notify.h
+- NSSystemDirectories.h
+- ntsid.h
+- paths.h
+- pcap-bpf.h
+- pcap-namedb.h
+- pcap.h
+- printerdb.h
+- printf.h
+- ranlib.h
+- removefile.h
+- sandbox.h
+- slapi-plugin.h
+- standards.h
+- string_x86.h
+- sysdir.h
+- sysexits.h
+- TargetConditionals.h
+- timingsafe.h
+- unwind_arm_ehabi.h
+- unwind_itanium.h
+- unwind.h
+- usbuf.h
+- vproc.h
+- xattr_flags.h
+- xcselect.h
+- Xplugin.h
+
+There are some non-standard headers for POSIX / UNIX:
+
+- aio.h
+- alloca.h
+- ar.h
+- cpio.h
+- curses.h
+- db.h
+- dirent.h
+- dlfcn.h
+- err.h
+- fcntl.h
+- fmtmsg.h
+- fnmatch.h
+- form.h
+- fstab.h
+- fts.h
+- ftw.h
+- getopt.h
+- glob.h
+- grp.h
+- iconv.h
+- ifaddrs.h
+- langinfo.h
+- libgen.h
+- memory.h
+- menu.h
+- monetary.h
+- mpool.h
+- ndbm.h
+- netdb.h
+- nl_types.h
+- nlist.h
+- poll.h
+- profile.h
+- pthread.h
+- pwd.h
+- readpassphrase.h
+- regex.h
+- resolv.h
+- rune.h
+- runetype.h
+- sched.h
+- search.h
+- semaphore.h
+- sgtty.h
+- spawn.h
+- stab.h
+- strhash.h
+- stringlist.h
+- strings.h
+- struct.h
+- syslog.h
+- tar.h
+- term_entry.h
+- term.h
+- termcap.h
+- termios.h
+- tic.h
+- timeconv.h
+- ttyent.h
+- tzfile.h
+- ucontext.h
+- ulimit.h
+- unctrl.h
+- unistd.h
+- util.h
+- utime.h
+- utmp.h
+- utmpx.h
+- vis.h
+- wordexp.h
+- xlocale.h
+
+There are some non-standard headers for third-party libraries:
+
+- bzlib.h
+- com_err.h
+- expat_config.h
+- expat_external.h
+- expat.h
+- gssapi.h
+- histedit.h
+- krb5.h
+- lber_types.h
+- lber.h
+- ldap_cdefs.h
+- ldap_features.h
+- ldap_schema.h
+- ldap_utf8.h
+- ldap.h
+- ldif.h
+- libcharset.h
+- localcharset.h
+- nc_tparm.h
+- panel.h
+- sqlite3.h
+- sqlite3ext.h
+- zconf.h
+- zlib.h
