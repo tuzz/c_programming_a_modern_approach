@@ -1,0 +1,13 @@
+This islower macro would not be legal according to the C standard:
+
+#define islower (c) ((c) >= 'a' && (c) <= 'z')
+
+For a macro to be legal in the C standard, all parameters must be protected by
+parentheses and it must evaluate its arguments exactly once. In this case, the
+first criterion is met but the second isn't because 'c' appears multiple times
+in the macro definition. For exmaple, if we had the following code:
+
+islower(c++);
+
+The macro would expand to ((c++) >= 'a' && (c++) <= 'z') which would
+unexpectedly increment the c variable twice.
