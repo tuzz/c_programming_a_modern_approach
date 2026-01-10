@@ -1,0 +1,63 @@
+The 'future library directions' section of the C99 standard can be found here:
+https://rgambord.github.io/c99-doc/sections/7/26/index.html
+
+All names desribed below are reserved, regardless of which headers are included.
+
+## complex.h
+
+These names are reserved and also with 'f' or 'l' suffixes:
+- cerf
+- cexpm1
+- clog2
+- cerfc
+- clog10
+- clgamma
+- cexp2
+- clog1p
+- ctgamma
+
+## ctype.h
+
+Functions that begin with 'is' or 'to' followed by a lowercase letter are reserved.
+
+## errno.h
+
+Macros that begin with 'E' followed by a digit or uppercase letter are reserved.
+
+## inttypes.h
+
+Macros that begin with 'PRI' or 'SCN' followed by a lowercase letter or 'X' are reserved.
+
+## locale.h
+
+Macros that begin with 'LC_' followed by an uppercase letter are reserved.
+
+## signal.h
+
+Macros that begin with 'SIG' or 'SIG_' and an uppercase letter are reserved.
+
+## stdint.h
+
+Typedefs that begin with 'int' or 'uint' and ending with '_t' are reserved.
+
+## stdio.h
+
+Conversion specifiers and length modifiers for lowercase letters are reserved for fprintf and fscanf.
+
+## stdlib.h
+
+Functions that begin with 'str' followed by a lowercase letter are reserved.
+
+## string.h
+
+Functions that begin with 'str', 'mem' or 'wcs' followed by a lowercase letter are reserved.
+
+## wchar.h
+
+Functions that begin with 'wcs' followed by a lowercase letter are reserved.
+
+Conversion specifiers and length modifiers for lowercsae letters are reserved for fwprintf and fwscanf.
+
+## wctype.h
+
+Functions that begin with 'is' or 'to' followed by a lowercase letter are reserved.
