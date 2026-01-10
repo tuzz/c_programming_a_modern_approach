@@ -1,0 +1,14 @@
+When a macro hides a function, the function prototype must come before the macro
+definition. Otherwise, the compiler could inadvertently apply the macro in the
+place where the function prototype appears. For example:
+
+#define some_function(x) some_function((x))
+
+void some_function(int);
+
+In this case, the preprocessor would replace every occurrence of some_function
+with its expansion. So in this case, it would rewrite the function prototype:
+
+void some_function((int));
+
+This would not be valid C and cause a compilation error.
