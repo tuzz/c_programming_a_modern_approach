@@ -1,0 +1,14 @@
+The stdio.h header contains some macros that hide a functions. It includes
+the _stdio.h file which contains these function declarations/prototypes:
+
+int getc_unlocked(FILE *);
+int putc_unlocked(int, FILE *);
+
+And it also declares macros with the same names and arguments:
+
+#define getc_unlocked(fp) __sgetc(fp)
+#define putc_unlocked(x, fp) __sputc(x, fp)
+
+The only purpose of these macros is to forward their arguments to the underlying
+function call. For example, they do not pass other implicit arguments like stdin
+or modify anything. Therefore, they are examples of a macro hiding a function.
