@@ -1,0 +1,44 @@
+a) The bit macros (e.g. _UPPER, _LOWER) begin with an underscore because the C
+standard reserves names that begin with an underscore at file scope for library
+library/implementation use. By using these reserved names, the standard library
+avoids collisions with user-defined names.
+
+b) The _ctype array will contain a byte per character that can be queried using
+the low-level operations & and | to get specific properties about the character
+such as whether it's alphanumeric or whether it's a control character.
+
+Here are the properties for each of the bits:
+7: _BLANK: space character
+6: _HEX: hexadecimal digit
+5: _SPACE: white-space character
+4: _PUNCT: punctuation character
+3: _CONTROL: control character
+2: _DIGIT: decimal digit
+1: _LOWER: lower-case letter
+0: _UPPER: upper-case letter
+
+According to the table in section 23.5 of the book:
+
+- The 'horizontal tab' character (\x09) is a control character and a white-space
+character. The iscntrl macro is true when the _CONTROL bit is set (bit 3) and
+the isspace macro is true when the _SPACE bit is set (bit 5) so the _ctype array
+will contain contain 00101000 at position 9.
+
+- The 'space' character is a printing character and a white-space character. The
+isprint macro is true when _BLANK| _PUNCT | _UPPER |_LOWER | _DIGIT so the
+_BLANK bit must be set (bit 7) and the isspace macro is true when the _SPACE bit
+is set (bit 5) so the _ctype array will contain 10100000 at position 32.
+
+- The 'A' character is a alphanumeric, alphabetic, graphical, printing,
+uppercase and hexadecimal character. Based on the macro definitions (omitted for
+brevity), the _HEX and _UPPER bits must be set (bits 6 and 0) so the _ctype
+array will contain 01000001 at position 65.
+
+- The '^' character is not one of the character classified in the table in
+section 23.5 but it is a punctuation character. The ispunct macro is true when
+the _PUNCT bit is set (bit 4) so the _ctype array will contain 00010000 at
+position 94.
+
+c) The advantage of using an array to implement these macros is that it is very
+efficient. The byte (bitfield) can be looked up in O(1) and no conditional
+expressions are needed which cause branching behaviour on CPUs.
