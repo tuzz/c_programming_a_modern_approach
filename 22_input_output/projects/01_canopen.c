@@ -18,6 +18,7 @@ int main(int argc, char *argv[]) {
       success = false;
     } else {
       printf("%s can be opened\n", argv[i]);
+      fclose(fp);
     }
   }
 
