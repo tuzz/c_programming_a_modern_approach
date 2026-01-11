@@ -1,0 +1,4 @@
+a) A file of object code produced by a C compiler: binary
+b) A program listing produced by a C compiler: text
+c) An email message sent from one computer to another: text
+d) A file containing a graphics image: binary
