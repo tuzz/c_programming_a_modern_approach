@@ -21,8 +21,14 @@ int main(int argc, char *argv[]) {
     exit(EXIT_FAILURE);
   }
 
-  while ((ch = getc(source_fp)) != EOF)
-    putc(ch, dest_fp);
+  while ((ch = getc(source_fp)) != EOF) {
+    if (putc(ch, dest_fp) == EOF) {
+      fprintf(stderr, "Error while writing to file\n");
+      fclose(source_fp);
+      fclose(dest_fp);
+      exit(EXIT_FAILURE);
+    }
+  }
 
   fclose(source_fp);
   fclose(dest_fp);
